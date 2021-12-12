@@ -1,13 +1,13 @@
-<?php 
+<?php
 session_start();
 	if(empty($_SESSION['user_info'])){
 		echo "<script type='text/javascript'>alert('Please login before proceeding further!');</script>";
 		header('Location: login.php');
 	}
-$conn = mysqli_connect("localhost","root","root","airline");
-if(!$conn){  
+$conn = mysqli_connect("localhost","afinch6","afinch6","afinch6");
+if(!$conn){
 	echo "<script type='text/javascript'>alert('Database failed');</script>";
-  	die('Could not connect: '.mysqli_connect_error());  
+  	die('Could not connect: '.mysqli_connect_error());
 }
 if (isset($_POST['submit']))
 {
@@ -21,7 +21,7 @@ $f_no=$row['f_no'];
 $query="INSERT INTO tickets (`p_id`, `f_no`) VALUES ('".$_SESSION['p_id']."', '".$f_no."');";
 
 	if(mysqli_query($conn, $query))
-{  
+{
 	if(!empty($row)){
 			$f_no=$row['f_no'];
 			$message = "Flight booked successfully";
@@ -46,21 +46,21 @@ $query="INSERT INTO tickets (`p_id`, `f_no`) VALUES ('".$_SESSION['p_id']."', '"
 			{
 				alert("Please select your origin");
 				source.focus();
-				return false;		
+				return false;
 			}
 			var destination=document.getElementById("destination");
 			if(destination.selectedIndex==0)
 			{
 				alert("Please select your destination");
 				destination.focus();
-				return false;		
+				return false;
 			}
 		}
 </script>
 <link href="style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<?php 
+<?php
 include ("nav.php")
 ?>
 <div id="mainarea">
@@ -91,7 +91,9 @@ include ("nav.php")
 <option value="Denver">Denver</option></select></td>
 </tr>
 </table><br><br>
-<center><input type="submit" value="submit" id="submit" name="submit" ></center>
+<center><input type="submit" value="submit" id="submit" name="submit" >
+</form>
+	<form action="viewFlights.php"><input type="submit" id="submit" value="View all Flights"></form></center>
 </div>
 </body>
 </html>

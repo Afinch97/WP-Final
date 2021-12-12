@@ -1,9 +1,9 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost","root","root","airline");
-if(!$conn){  
+$conn = mysqli_connect("localhost","afinch6","afinch6","afinch6");
+if(!$conn){
 	echo "<script type='text/javascript'>alert('Database failed');</script>";
-  	die('Could not connect: '.mysqli_connect_error());  
+  	die('Could not connect: '.mysqli_connect_error());
 }
 if (isset($_POST['submit']))
 {
@@ -15,12 +15,12 @@ $email=$_POST['email'];
 $pw=$_POST['pw'];
 $sql = "INSERT INTO passenger(Fname,Lname,age,mno,email,password) VALUES ('$fname', '$lname', '$age', '$mob','$email', '$pw');";
 	if(mysqli_query($conn, $sql))
-{  
+{
 	$message = "Your account has been created.";
 }
 else
-{  
-	$message = "Error: Account not created."; 
+{
+	$message = "Error: Account not created.";
 }
 	echo "<script type='text/javascript'>alert('$message');</script>";
 }
