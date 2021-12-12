@@ -5,10 +5,10 @@
 <link href="style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<?php
+<?php 
 	session_start();
-	include("nav.php");
-	$conn = mysqli_connect("localhost","afinch6","afinch6","afinch6");
+	include("nav.php"); 
+	$conn = mysqli_connect("localhost","root","root","airline");
 	$sql = "SELECT *
 		FROM parking";
 	$result = mysqli_query($conn, $sql);
@@ -18,8 +18,8 @@
 	}
 
 	if (isset($_POST['submit'])&&isset($_POST['reserve'])){
-		$sql = "UPDATE `afinch6`.`parking` SET `p_no` = '".$_SESSION['p_id']."' WHERE (`spot_no` = '".$_POST['reserve']."');";
-	if(mysqli_query($conn, $sql)){
+		$sql = "UPDATE `airline`.`parking` SET `p_no` = '".$_SESSION['p_id']."' WHERE (`spot_no` = '".$_POST['reserve']."');";
+	if(mysqli_query($conn, $sql)){  
 		$message = "You have reserved space number ".$_POST['reserve'].".";
 	}
 	else{
@@ -28,10 +28,10 @@
 		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 ?>
-<div id="mainarea" align="center">
+<div align="center" style="background: grey;">
 <form method="post" action="parking.php">
-<table align="center">
-	<h3 align="center"><font color="Cornsilk" face="Times New Roman">Parking Spaces Available<font></h3>
+<table>
+	<h3>Parking Spaces Available</h3>
 <tr>
 	<th></th>
     <th>Number</th>

@@ -5,10 +5,10 @@
 <link href="style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<?php
+<?php 
 session_start();
-include("nav.php");
-$conn = mysqli_connect("localhost","afinch6","afinch6","afinch6");
+include("nav.php"); 
+$conn = mysqli_connect("localhost","root","root","airline");
 $sql = "SELECT *
 	   FROM flights
 	   WHERE f_no IN (

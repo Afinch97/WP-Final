@@ -2,10 +2,10 @@
 session_start();
 if (isset($_POST['submit']))
 {
-	$conn = mysqli_connect("localhost","afinch6","afinch6","afinch6");
-if(!$conn){
+	$conn = mysqli_connect("localhost","root","root","airline");
+if(!$conn){  
 	echo "<script type='text/javascript'>alert('Database failed');</script>";
-  	die('Could not connect: '.mysqli_connect_error());
+  	die('Could not connect: '.mysqli_connect_error());  
 }
 $email=$_POST['email'];
 $pw=$_POST['pw'];
@@ -16,8 +16,6 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 			$_SESSION['user_info'] = $user['email'];
 			$_SESSION['p_id'] = $user['p_id'];
 			$message='Logged in successfully';
-			header("Location: index.php");
-			exit;
 		}
 		else{
 			$message = 'Wrong email or password.';
@@ -37,7 +35,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 		var atpos = EmailId.value.indexOf("@");
     	var dotpos = EmailId.value.lastIndexOf(".");
 		var pw=document.getElementById("pw");
-		if (atpos<1 || dotpos<atpos+2 || dotpos+2>=EmailId.value.length)
+		if (atpos<1 || dotpos<atpos+2 || dotpos+2>=EmailId.value.length) 
 		{
         	alert("Enter valid email-ID");
 			EmailId.focus();
