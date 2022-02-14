@@ -2,7 +2,7 @@
 session_start();
 if (isset($_POST['submit']))
 {
-	$conn = mysqli_connect("localhost","afinch6","afinch6","afinch6");
+	$conn = pg_connect(getenv("DATABASE_URL"));
 if(!$conn){
 	echo "<script type='text/javascript'>alert('Database failed');</script>";
   	die('Could not connect: '.mysqli_connect_error());

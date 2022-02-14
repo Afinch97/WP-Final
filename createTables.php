@@ -10,19 +10,15 @@
 <body>
 You have successfully logged in
 <?php
-$servername = "localhost";
-$username = "afinch6";
-$password = "afinch6";
-$dbname = "afinch6";
-
+$db = parse_url(getenv("DATABASE_URL"));
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = pg_connect(getenv("DATABASE_URL"));
 // Check connection
 if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "CREATE TABLE flights ()"
+$sql = "CREATE TABLE flights ()";
 
 $sql = "CREATE TABLE passenger (`p_id` int(11) NOT NULL AUTO_INCREMENT,Fname VARCHAR(50), Lname VARCHAR(50), age int(11), mno varchar(30), email varchar(30), id varchar(30), password varchar(30))ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1";
 if ($conn->query($sql) === TRUE) {

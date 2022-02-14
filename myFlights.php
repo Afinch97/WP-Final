@@ -8,7 +8,7 @@
 <?php
 session_start();
 include("nav.php");
-$conn = mysqli_connect("localhost","afinch6","afinch6","afinch6");
+$conn = pg_connect(getenv("DATABASE_URL"));
 $sql = "SELECT *
 	   FROM flights
 	   WHERE f_no IN (

@@ -8,12 +8,9 @@
         
 
 <?php
-$servername = "localhost";
-$username = "mkaur10";
-$password = "mkaur10";
-$dbname = "mkaur10";
+$db = parse_url(getenv("DATABASE_URL"));
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = pg_connect(getenv("DATABASE_URL"));
 // Check connection
 if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);

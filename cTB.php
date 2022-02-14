@@ -10,13 +10,10 @@
 <body>
 You have successfully logged in
 <?php
-$servername = "localhost";
-$username = "afinch6";
-$password = "afinch6";
-$dbname = "afinch6";
-
+$db = parse_url(getenv("DATABASE_URL"));
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = pg_connect(getenv("DATABASE_URL"));
+
 // Check connection
 if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);

@@ -4,7 +4,7 @@ session_start();
 		echo "<script type='text/javascript'>alert('Please login before proceeding further!');</script>";
 		header('Location: login.php');
 	}
-$conn = mysqli_connect("localhost","afinch6","afinch6","afinch6");
+$conn = pg_connect(getenv("DATABASE_URL"));
 if(!$conn){
 	echo "<script type='text/javascript'>alert('Database failed');</script>";
   	die('Could not connect: '.mysqli_connect_error());

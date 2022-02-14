@@ -7,7 +7,7 @@
 <?php
 session_start();
 include ("nav.php");
-$conn = mysqli_connect("localhost","afinch6","afinch6","afinch6");
+$conn = pg_connect(getenv("DATABASE_URL"));
 $sql = "SELECT *
   FROM flights";
 $result = mysqli_query($conn, $sql);
@@ -40,12 +40,9 @@ else{
   <th>Destination</th>
   </tr>
 <?php
-$servername = "localhost";
-$username = "afinch6";
-$password = "afinch6";
-$dbname = "afinch6";
-  // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$db = parse_url(getenv("DATABASE_URL"));
+// Create connection
+$conn = pg_connect(getenv("DATABASE_URL"));
   // Check connection
 if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
