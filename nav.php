@@ -8,26 +8,7 @@
         
 
 <?php
-$db = parse_url(getenv("DATABASE_URL"));
-// Create connection
-$conn = pg_connect(getenv("DATABASE_URL"));
-// Check connection
-if ($conn->connect_error) {
-     die("Connection failed: " . $conn->connect_error);
-} 
-$sql = "CREATE TABLE albums (artist VARCHAR(20), name VARCHAR(50), genre VARCHAR(20), rdate INT(4))";
-if ($conn->query($sql) === TRUE) {
-} else {
-//table already exists
-}
 
-$sql = "CREATE TABLE artists (name VARCHAR(50))";
-if ($conn->query($sql) === TRUE) {
-} else {
-//table already exists
-}
-
-$conn->close();
 ?> 
 
 
